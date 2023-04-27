@@ -10,12 +10,9 @@ pipeline {
         stage( 'Проверка подключения по SSH' ) {
             steps {
                 echo "Проверка подключения по SSH"
-                script {
 
-                   }
                 }
         }
-        
 
 
         stage ('Stage 2') {
