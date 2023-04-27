@@ -10,6 +10,11 @@ pipeline {
         stage( 'Проверка подключения по SSH' ) {
             steps {
                 echo "Проверка подключения по SSH"
+                    //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
+                sshagent(credentials:['white_SSH']) {
+                sh 'ssh white@192.168.40.180 pwd'
+                }
+
 
                 }
         }
