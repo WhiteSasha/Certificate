@@ -14,8 +14,8 @@ pipeline {
 
                    }
                 }
-            }
         }
+        
 
 
         stage ('Stage 2') {
