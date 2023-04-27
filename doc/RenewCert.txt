@@ -1,0 +1,38 @@
+#####################################################################
+===================ШАГИ для перевыпуска сертификата==================
+#####################################################################
+
+1)	удалить линк на рабочий конфиг 
+rm /etc/nginx/sites-enabled/jenkins.alex-white.ru
+
+2) 	Сделать новый линк на фейковый
+ln -s /etc/nginx/sites-available/jenkins.alex-white.ru:for_letsencrypt /etc/nginx/sites-enabled/jenkins.alex-white.ru:for_letsencrypt
+
+3) 	Перечитать конфиг nginx
+sudo nginx -s reload	
+
+4) 	Убедиться что теперь работает фейковый сайт.
+http://jenkins.alex-white.ru/	
+
+5)	Запустить проверочный перевыпуск сертификате (сам перевыпуск не состоится) 
+certbot certonly --dry-run --webroot -w /var/www/jenkins -d jenkins.alex-white.ru
+	
+6)	Убедиться в наличии ответа The dry run was successful
+
+7)	Запустить выпуск сертификата
+certbot certonly --webroot -w /var/www/jenkins -d jenkins.alex-white.ru
+	
+8)	Убедиться в наличии ответа
+Congratulations! Your certificate and chain have been saved at:
+
+9)	Удалить фейковый конфиг
+rm /etc/nginx/sites-enabled/jenkins.alex-white.ru:for_letsencrypt
+
+10)	Вернуть рабочий конфиг, который удалили на 1м шаге
+ln -s /etc/nginx/sites-available/jenkins.alex-white.ru /etc/nginx/sites-enabled/jenkins.alex-white.ru
+
+11) Перечитать конфиг nginx
+sudo nginx -s reload
+
+12) проверить срок нового сертификата
+curl --insecure -vvI https://jenkins.alex-white.ru 2>&1 | awk 'BEGIN { cert=0 } /^\* SSL connection/ { cert=1 } /^\*/ { if (cert) print }'	
