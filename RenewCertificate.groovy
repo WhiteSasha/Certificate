@@ -49,7 +49,7 @@ pipeline {
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sh '''
                     echo "---BEFORE SSH---"
-                    sh 'scp  README.md  root@192.168.40.109:/tmp/README.md'
+                    scp README.md  root@192.168.40.109:/tmp/README.md
                     echo "===================="
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
