@@ -50,10 +50,13 @@ pipeline {
 
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
-                        sh 'printenv'
                         sh 'whoami'
                         sh 'ls'
                         sh 'pwd'
+                        sh '''
+                         ls /etc/nginx/sites-enabled/
+                         cat /etc/nginx/sites-enabled/jenkins.alex-white.ru
+                        '''
                     }
                 }
 
