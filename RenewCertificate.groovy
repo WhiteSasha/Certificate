@@ -52,24 +52,19 @@ pipeline {
                     ls
                     pwd
                     whoami
+                    echo "===================="
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
-                        sh 'echo "---SSH---"'
-                        sh 'ls'
-                        sh 'pwd'
-                        sh 'whoami'
+                            sh 'scp  README.md  root@192.168.40.109:/tmp/README.md'
+//                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
+//                        sh 'echo "---SSH---"'
+//                        sh 'ls'
+//                        sh 'pwd'
+//                        sh 'whoami'
 
 //                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
 //                        sh 'scp README.md white@192.168.40.180/tmp/README.md'
-                        sh '''
-                         touch FileToTranferFromJenkins
-                         echo "$(date)" >> FileToTranferFromJenkins
-                         ls
-                         scp  FileToTranferFromJenkins  root@192.168.40.109:/tmp/FileToTranferFromJenkins
-                         ls /tmp
-                         hostname
-                        '''
+
                     }
                 }
 
