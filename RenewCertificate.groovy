@@ -51,6 +51,7 @@ pipeline {
                     echo "---BEFORE SSH---"
                     ls
                     pwd
+                    whoami
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
