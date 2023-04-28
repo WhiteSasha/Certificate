@@ -31,9 +31,9 @@ pipeline {
 
 
         stage( 'Проверка подключения по SSH' ) {
-            println "\033[34mПроверка подключения по SSH\033[0m"
             steps {
                 echo "Проверка подключения по SSH"
+                println "\033[34mПроверка подключения по SSH\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                 sshagent(credentials:['${devopsConfig.server.SSHCredentials}']) {
                 sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
