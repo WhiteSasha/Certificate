@@ -52,16 +52,19 @@ pipeline {
                     ls
                     pwd
                     whoami
+                    scp README.md white@192.168.40.180/tmp/README.md
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
                         sh 'echo "---SSH---"'
-                        sh 'pwd'
                         sh 'ls'
+                        sh 'pwd'
+                        sh 'whoami'
+
 //                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
-                        sh 'scp README.md white@192.168.40.180/tmp/README.md'
+//                        sh 'scp README.md white@192.168.40.180/tmp/README.md'
                         sh '''
-                         ls /etc/nginx/sites-enabled/
+                         ls /tmp
                          hostname
                         '''
                     }
