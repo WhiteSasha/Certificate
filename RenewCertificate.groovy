@@ -53,7 +53,7 @@ pipeline {
                     echo "---BEFORE SSH---"
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                    sh 'scp ./files/test.sh  ${devopsConfig.server.RemoteHost}:/tmp/test.sh'
+                    sh 'echo ${devopsConfig.server.RemoteHost}'
                     sh '''
                     echo "---SSH---"
                     scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
