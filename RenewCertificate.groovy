@@ -36,7 +36,7 @@ pipeline {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
                     sh 'printenv'
-                    sh 'echo ${devopsConfig.server.RemoteHost}'
+//                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
             }
         }
