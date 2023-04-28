@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "==========###Jist for run shell script###----------"
+echo "==========### Just for test run shell script ###----------"
 ls
 pwd
 echo '=========THE END==========='
