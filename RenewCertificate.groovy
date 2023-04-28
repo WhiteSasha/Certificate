@@ -53,10 +53,10 @@ pipeline {
                         sh 'whoami'
                         sh 'pwd'
                         sh 'ls'
-                        sh 'scp ./files/test.sh white@192.168.40.180/tmp/'
+                        sh 'scp ./files/test.sh white@192.168.40.180/tmp/test.sh'
                         sh '''
                          ls /etc/nginx/sites-enabled/
-                         cat /etc/nginx/sites-enabled/jenkins.alex-white.ru
+                         hostname
                         '''
                     }
                 }
