@@ -52,7 +52,6 @@ pipeline {
                     ls
                     pwd
                     whoami
-                    scp README.md white@192.168.40.180/tmp/README.md
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
