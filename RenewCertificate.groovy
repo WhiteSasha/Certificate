@@ -49,16 +49,14 @@ pipeline {
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sh '''
                     echo "---BEFORE SSH---"
-                    ls
-                    pwd
-                    whoami
+                    sh 'scp  README.md  root@192.168.40.109:/tmp/README.md'
                     echo "===================="
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                            sh 'scp  README.md  root@192.168.40.109:/tmp/README.md'
+                            
 //                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
-//                        sh 'echo "---SSH---"'
-//                        sh 'ls'
+                        sh 'echo "---SSH---"'
+                        sh 'ls /tmp'
 //                        sh 'pwd'
 //                        sh 'whoami'
 
