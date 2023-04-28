@@ -35,7 +35,7 @@ pipeline {
             steps {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
-                    //Зачистка WorkSpace
+                    //Зачистка WorkSpace!
                     cleanWs()
                     sh 'echo "======Проверка переменных====="'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
@@ -56,7 +56,9 @@ pipeline {
                     sh '''
                     echo "---SSH---"
                     scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
-                    ssh root@192.168.40.109 chmod +x /tmp/test.sh; sh /tmp/test.sh; rm /tmp/test.sh
+                    ssh root@192.168.40.109 ls /tmp -la;
+                    ssh root@192.168.40.109 chmod +x /tmp/test.sh
+                    ssh root@192.168.40.109 sh /tmp/test.sh
                     '''
 
 //                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
