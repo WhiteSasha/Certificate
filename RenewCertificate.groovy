@@ -20,6 +20,7 @@ pipeline {
                             try {
                                 println "\033[34mSTART READ DEVOPS CONFIG STAGE\033[0m"
                                 devopsConfig = readYaml(file: './devops-config/jenkins/devops-config.yml')
+                                echo "Got RemoteHost as ${devopsConfig.server. RemoteHost} "
                                 println "\033[32mREAD DEVOPS CONFIG STAGE SUCCESS\033[0m"
                             }
                             catch (e) {
@@ -35,7 +36,7 @@ pipeline {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
                     sh 'printenv'
-                    sh 'echo $devopsConfig.server.SSHCredentials'
+                    sh 'println devopsConfig.server.SSHCredentials)'
                 }
             }
         }
