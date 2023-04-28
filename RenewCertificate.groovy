@@ -57,7 +57,7 @@ pipeline {
 //                    ssh root@192.168.40.109 ls /tmp -la
                     ssh root@192.168.40.109 chmod +x /tmp/test.sh
                     ssh root@192.168.40.109 sh /tmp/test.sh
-                    ssh root@192.168.40.109 rm /tmp/test.sh
+//                    ssh root@192.168.40.109 rm /tmp/test.sh
                     '''
 
 //                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
