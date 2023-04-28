@@ -54,7 +54,7 @@ pipeline {
                     sh '''
                     echo "---SSH---"
                     scp README.md  root@192.168.40.109:/tmp/README.md
-                    ssh 192.168.40.109 ls /tmp;  whoami
+                    ssh root@192.168.40.109 ls /tmp;  whoami
                     '''
 
 //                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
