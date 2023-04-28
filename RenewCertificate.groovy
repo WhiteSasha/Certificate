@@ -3,6 +3,8 @@
 // по мотивам ./doc/RenewCert.txt
 //#############################################
 
+def devopsConfig
+
 pipeline {
     agent any
 
@@ -32,16 +34,17 @@ pipeline {
 
         stage( 'Проверка подключения по SSH' ) {
             steps {
-                echo "Проверка подключения по SSH"
-                println "\033[34mПроверка подключения по SSH\033[0m"
+                script {
+                    echo "Проверка подключения по SSH"
+                    println "\033[34mПроверка подключения по SSH\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
-                sshagent(credentials:['${devopsConfig.server.SSHCredentials}']) {
-                sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
-                sh 'ssh white@192.168.40.180 whoami'
-                sh 'ssh white@192.168.40.180 ls'
-                sh 'ssh white@192.168.40.180 pwd'
+                    sshagent(credentials: ['${devopsConfig.server.SSHCredentials}']) {
+                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
+                        sh 'ssh white@192.168.40.180 whoami'
+                        sh 'ssh white@192.168.40.180 ls'
+                        sh 'ssh white@192.168.40.180 pwd'
+                    }
                 }
-
 
                 }
         }
