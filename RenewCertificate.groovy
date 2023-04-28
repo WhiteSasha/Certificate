@@ -55,7 +55,8 @@ pipeline {
                     echo "---SSH---"
                     scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
                     ssh root@192.168.40.109 ls /tmp
-                    ssh root@192.168.40.109 ./tmp/test.sh
+                    ssh root@192.168.40.109 chmod +x
+                    ssh root@192.168.40.109 bash /tmp/test.sh
                     '''
 
 //                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
