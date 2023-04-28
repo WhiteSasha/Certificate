@@ -1,6 +1,7 @@
 server:
   login: white
   host: 192.168.40.180
+  RemoteHost: white@192.168.40.180
   SSHCredentials: white_SSH
 git:
   httpsurl: https://***.ru
