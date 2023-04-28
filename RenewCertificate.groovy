@@ -49,8 +49,8 @@ pipeline {
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
 
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
-                        sh 'whoami'
+                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180 whoami'
+//                        sh 'whoami'
                         sh 'pwd'
                         sh 'ls'
                         sh 'scp ./files/test.sh white@192.168.40.180/tmp/test.sh'
