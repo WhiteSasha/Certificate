@@ -53,7 +53,7 @@ pipeline {
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                     sh '''
                     echo "---SSH---"
-                    scp README.md  root@192.168.40.109:/tmp/README.md
+                    scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
                     ssh root@192.168.40.109 ls /tmp;  whoami
                     '''
 
