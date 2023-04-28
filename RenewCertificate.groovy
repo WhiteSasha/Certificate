@@ -66,6 +66,7 @@ pipeline {
                         sh '''
                          touch FileToTranferFromJenkins
                          echo "$(date)" >> FileToTranferFromJenkins
+                         ls
                          scp  FileToTranferFromJenkins  root@192.168.40.109:/tmp/FileToTranferFromJenkins
                          ls /tmp
                          hostname
