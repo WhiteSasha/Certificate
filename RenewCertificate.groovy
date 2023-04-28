@@ -34,7 +34,8 @@ pipeline {
             steps {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
-                    sh 'echo "${devopsConfig.server.SSHCredentials}"'
+                    sh 'printenv'
+                    sh 'echo $devopsConfig.server.SSHCredentials'
                 }
             }
         }
