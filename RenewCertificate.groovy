@@ -53,7 +53,8 @@ pipeline {
 //                        sh 'whoami'
                         sh 'pwd'
                         sh 'ls'
-                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
+//                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
+                        sh 'scp README.md white@192.168.40.180/tmp/README.md'
                         sh '''
                          ls /etc/nginx/sites-enabled/
                          hostname
