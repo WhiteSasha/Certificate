@@ -35,6 +35,8 @@ pipeline {
             steps {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
+                    //Зачистка WorkSpace
+                    cleanWs()
                     sh 'echo "======Проверка переменных====="'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
