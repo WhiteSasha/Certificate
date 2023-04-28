@@ -53,7 +53,8 @@ pipeline {
                     echo "---BEFORE SSH---"
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                    sh 'echo ${devopsConfig.server.RemoteHost}'
+// Не могу передать переменную!!!
+//                    sh 'echo ${devopsConfig.server.RemoteHost}'
                     sh '''
                     echo "---SSH---"
                     scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
