@@ -35,7 +35,7 @@ pipeline {
             steps {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
-                    sh 'printenv'
+//                    sh 'printenv'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
             }
@@ -51,8 +51,9 @@ pipeline {
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
                         sh 'whoami'
-                        sh 'ls'
                         sh 'pwd'
+                        sh 'ls'
+                        sh 'scp ./files/test.sh' white@192.168.40.180/tmp/'
                         sh '''
                          ls /etc/nginx/sites-enabled/
                          cat /etc/nginx/sites-enabled/jenkins.alex-white.ru
