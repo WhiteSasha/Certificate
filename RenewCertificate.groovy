@@ -47,10 +47,14 @@ pipeline {
                     echo "Проверка подключения по SSH"
                     println "\033[34mПроверка подключения по SSH\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
-
+                    sh '''
+                    echo "---BEFORE SSH---"
+                    ls
+                    pwd
+                       '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180 whoami'
-//                        sh 'whoami'
+                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
+                        sh 'echo "---SSH---"'
                         sh 'pwd'
                         sh 'ls'
 //                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
