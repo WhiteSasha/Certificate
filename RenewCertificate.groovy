@@ -35,7 +35,7 @@ pipeline {
             steps {
                 println "\033[34mПроверка переменных\033[0m"
                 script {
-                    sh 'printenv'
+                    sh 'echo "======Проверка переменных====="'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
             }
@@ -49,13 +49,12 @@ pipeline {
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sh '''
                     echo "---BEFORE SSH---"
-                    echo "===================="
                        '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                     sh '''
                     echo "---SSH---"
                     scp README.md  root@192.168.40.109:/tmp/README.md
-                    ssh 192.168.40.109 ls /tmp & whoami
+                    ssh 192.168.40.109 ls /tmp;  whoami
                     '''
 
 //                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
