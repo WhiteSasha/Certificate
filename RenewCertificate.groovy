@@ -64,6 +64,9 @@ pipeline {
 //                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
 //                        sh 'scp README.md white@192.168.40.180/tmp/README.md'
                         sh '''
+                         touch FileToTranferFromJenkins
+                         echo "$(date)" >> FileToTranferFromJenkins
+                         scp  FileToTranferFromJenkins  root@192.168.40.109:/tmp/FileToTranferFromJenkins
                          ls /tmp
                          hostname
                         '''
