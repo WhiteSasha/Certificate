@@ -43,39 +43,19 @@ pipeline {
             }
         }
 
-        stage( 'Проверка подключения по SSH' ) {
+        stage( 'Test SSH copy and run script' ) {
             steps {
                 script {
                     sh "echo '==RemoteHost==: ${devopsConfig.server.RemoteHost}'"
-                    println "\033[34mПроверка подключения по SSH\033[0m"
+                    println "\033[34mTest SSH copy and run script\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                    // Не могу передать переменную!!!
-
-                    sh """echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
-                    scp ./files/test.sh  ${devopsConfig.server.RemoteHost}:/tmp/test.sh
-                    ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/test.sh
-                    ssh ${devopsConfig.server.RemoteHost} sh /tmp/test.sh
-                    ssh ${devopsConfig.server.RemoteHost} ls /tmp/
-                    """
-
-//                    sh '''
-//                    echo "---SSH---"
-//                    scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
-//                    ssh root@192.168.40.109 chmod +x /tmp/test.sh
-//                    ssh root@192.168.40.109 sh /tmp/test.sh
-//                    ssh root@192.168.40.109 rm /tmp/test.sh
-//                    '''
-
-//                        sh 'ssh -o StrictHostKeyChecking=no white@192.168.40.180'
-//                        sh 'echo "---SSH---"'
-//                        sh 'ls /tmp'
-//                        sh 'pwd'
-//                        sh 'whoami'
-
-//                        sh 'scp files/test.sh white@192.168.40.180/tmp/test.sh'
-//                        sh 'scp README.md white@192.168.40.180/tmp/README.md'
-
+                        sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
+                                scp ./files/test.sh  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
+                                ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
+                                ssh ${devopsConfig.server.RemoteHost} sh /tmp/${devopsConfig.file.TestShName}
+                                ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
+                        """
                     }
                 }
 
