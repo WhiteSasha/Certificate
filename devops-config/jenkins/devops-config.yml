@@ -7,3 +7,5 @@ server:
 git:
   httpsurl: https://***.ru
   sshurl: ssh://git@***:7999
+file:
+  TestShName: test.sh
