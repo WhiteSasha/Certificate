@@ -65,17 +65,8 @@ pipeline {
 
         stage ('Stage 2') {
             steps {
-                script {
-                    println "\033[34mListing Nginx config files\033[0m"
-                    sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                        sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
-                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-enabled/
-                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-available/
-                        """                
-                    }
-                }
+                echo "222222222222"
             }
-
         }
     }
 
