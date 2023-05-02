@@ -45,9 +45,8 @@ pipeline {
 
         stage( 'Проверка подключения по SSH' ) {
             steps {
-                sh "echo '==RemoteHost==: ${devopsConfig.server.RemoteHost}'"
                 script {
-                    sh "echo ==RemoteHost:== ${devopsConfig.server.RemoteHost} "
+                    sh "echo '==RemoteHost==: ${devopsConfig.server.RemoteHost}'"
                     println "\033[34mПроверка подключения по SSH\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
