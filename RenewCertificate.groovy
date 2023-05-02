@@ -45,17 +45,14 @@ pipeline {
 
         stage( 'Проверка подключения по SSH' ) {
             steps {
-                sh 'echo "RemoteHost: ${devopsConfig.server.RemoteHost}"'
+                sh "echo '==RemoteHost==: ${devopsConfig.server.RemoteHost}'"
                 script {
+                    sh "echo ==RemoteHost:== ${devopsConfig.server.RemoteHost} "
                     println "\033[34mПроверка подключения по SSH\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
-                    sh '''
-                    echo "---BEFORE SSH---"
-                       '''
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
 // Не могу передать переменную!!!
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
-                    sh "echo ==RemoteHost:== ${devopsConfig.server.RemoteHost} "
                     sh '''
                     echo "---SSH---"
                     scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
