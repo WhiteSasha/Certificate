@@ -72,10 +72,7 @@ pipeline {
                         ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-enabled/
                         ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-available/
                         """
-                    
                     }                        
-                
-                
                 }
             }
 
