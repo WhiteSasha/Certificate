@@ -52,8 +52,10 @@ pipeline {
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                     // Не могу передать переменную!!!
 
-                    sh "echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'"
-                    sh "scp ./files/test.sh  ${devopsConfig.server.SSHCredentials}:/tmp/test.sh"
+                    sh """echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
+                    scp ./files/test.sh  ${devopsConfig.server.RemoteHost}:/tmp/test.sh
+                    """
+                    
 //                    sh '''
 //                    echo "---SSH---"
 //                    scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
