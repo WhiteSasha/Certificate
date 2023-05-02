@@ -54,8 +54,11 @@ pipeline {
 
                     sh """echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                     scp ./files/test.sh  ${devopsConfig.server.RemoteHost}:/tmp/test.sh
+                    ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/test.sh
+                    ssh ${devopsConfig.server.RemoteHost} sh /tmp/test.sh
+                    ssh ${devopsConfig.server.RemoteHost} ls /tmp/
                     """
-                    
+
 //                    sh '''
 //                    echo "---SSH---"
 //                    scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
