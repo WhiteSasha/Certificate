@@ -66,6 +66,8 @@ pipeline {
         stage ('Stage 2') {
             steps {
                 echo "STAGE 2"
+                script {
+                }
                 
                 }
             }
