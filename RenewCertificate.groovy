@@ -63,10 +63,11 @@ pipeline {
         }
 
 
-        stage ('Stage 2') {
+        stage ('Nginx config') {
             steps {
                 echo "STAGE 2"
                 script {
+                    println "\033[34mNginx config\033[0m"
                 }
                 
                 }
