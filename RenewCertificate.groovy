@@ -47,7 +47,7 @@ pipeline {
             steps {
                 sh 'echo "RemoteHost: ${devopsConfig.server.RemoteHost}"'
                 script {
-                    echo "Проверка подключения по SSH"
+//                    echo "Проверка подключения по SSH"
                     println "\033[34mПроверка подключения по SSH\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sh '''
