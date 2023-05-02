@@ -56,7 +56,7 @@ pipeline {
                     sh "scp ./files/test.sh  ${devopsConfig.server.NewRemoteHost}:/tmp/test.sh"
                     sh '''
 //                    echo "---SSH---"
-//                    scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
+                    scp ./files/test.sh  root@192.168.40.109:/tmp/test.sh
 //                    ssh root@192.168.40.109 chmod +x /tmp/test.sh
 //                    ssh root@192.168.40.109 sh /tmp/test.sh
 //                    ssh root@192.168.40.109 rm /tmp/test.sh
