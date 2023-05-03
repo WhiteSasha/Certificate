@@ -51,7 +51,7 @@ pipeline {
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
-                                scp ./files/test.sh  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
+                                scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} sh /tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
