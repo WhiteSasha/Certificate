@@ -68,11 +68,14 @@ pipeline {
                 echo "STAGE 2"
                 script {
                     println "\033[34mNginx config\033[0m"
-                    sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                        sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
-                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-enabled/
-                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-available/
-                        """
+                    dh = new File('.')
+                    dh.eachFile {
+                        println(it)
+//                    sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
+//                        sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
+//                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-enabled/
+//                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-available/
+//                        """
                     }                    
                 }
             }
