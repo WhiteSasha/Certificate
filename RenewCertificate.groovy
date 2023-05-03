@@ -4,7 +4,7 @@
 //#############################################
 
 def devopsConfig
-
+import groovy.io.*
 pipeline {
     agent any
 
@@ -71,6 +71,7 @@ pipeline {
                     dh = new File('.')
                     dh.eachFile {
                         println(it)
+                    }
 //                    sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
 //                        sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
 //                        ssh ${devopsConfig.server.RemoteHost} ls /etc/nginx/sites-enabled/
