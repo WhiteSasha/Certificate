@@ -63,7 +63,7 @@ pipeline {
                                 echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                                 scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
-                                ssh ${devopsConfig.server.RemoteHost} sh /tmp/${devopsConfig.file.TestShName} ${params.domain}
+                                ssh ${devopsConfig.server.RemoteHost} sh sudo /tmp/${devopsConfig.file.TestShName} ${params.domain}
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
                     }
