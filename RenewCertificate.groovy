@@ -75,7 +75,7 @@ pipeline {
                                 echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                                 scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
-                                ssh ${devopsConfig.server.RemoteHost} sudo /tmp/${devopsConfig.file.TestShName} ${params.domain} ${params.DryRunMode}
+                                ssh ${devopsConfig.server.RemoteHost} sudo /tmp/${devopsConfig.file.TestShName} ${params.domain} ${params.DryRunMode} &>${devopsConfig.file.TestShName}.sh.log
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
                     archiveArtifacts artifacts: "/var/log/letsencrypt/letsencrypt.log,**/*.log,*.log", allowEmptyArchive: true
