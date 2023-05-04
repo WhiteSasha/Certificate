@@ -96,7 +96,6 @@ pipeline {
 //                    }
                 }
             }
-        }
 
         stage('Debug mode') {
             when {
@@ -108,8 +107,8 @@ pipeline {
                 }
             }
         }
-
-
     }
+
+}
 
             
