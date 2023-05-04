@@ -5,6 +5,7 @@ DryRunMode="$2"
 # Set the color variable
 green='\033[0;32m'
 yellow='\033[0;33m'
+red='\033[31m'
 # Clear the color after that
 clear='\033[0m'
 
@@ -13,6 +14,12 @@ echo -e "${green}\t --==   Update let's encrypt certificate   ==-- ${clear}"
 echo -e "\tUpdate certificate for domain: ${domain}"
 echo -e "\tDry run mode: ${DryRunMode}"
 echo -e "\n---------------------------------------------------------"
+
+if ${domain} == "No_Domain"; then
+  echo -e "${red}\t STOP!    No domain selected: ${domain} ${clear}"
+  exit 1
+  else
+fi
 
 
 sleep 2

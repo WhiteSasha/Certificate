@@ -16,7 +16,7 @@ pipeline {
 //Параметризированая джоба. https://devopscube.com/declarative-pipeline-parameters/ Параметры в UI джобы появятся после первого запуска
     parameters{
         choice(
-            choices: ['nexus.alex-white.ru', 'seafile.alex-white.ru', 'jenkins.alex-white.ru'], 
+            choices: ['No_Domain', 'nexus.alex-white.ru', 'seafile.alex-white.ru', 'jenkins.alex-white.ru'], 
             name: 'domain'
         )
         booleanParam(
