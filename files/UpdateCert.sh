@@ -16,7 +16,7 @@ echo -e "\tDry run mode: ${DryRunMode}"
 echo -e "\n---------------------------------------------------------"
 
 if [ "$domain" = "No_Domain" ]; then
-  echo -e "${red}\t STOP!    No domain selected: ${domain} ${clear}"
+  echo -e "${red}\t STOP!    No domain selected: ${domain}. Please slect domain  ${clear}"
   exit 1
 fi
 
