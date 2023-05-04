@@ -80,7 +80,9 @@ pipeline {
         }
 
 
+
         stage ('Nginx config') {
+
             steps {
                 echo "STAGE 2"
                 script {
@@ -98,6 +100,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Debug mode') {
+            when {
+                expression { params.DebugMode }
+            }
+            steps {
+                script {
+                    println "\033[34mDebug mode\033[0m"
+                }
+            }
+        }
+
+
+
 
         }
     }
