@@ -19,6 +19,11 @@ pipeline {
             choices: ['nexus.alex-white.ru', 'jenkins.alex-white.ru', 'seafiles.alex-white.ru', 'alex-white.ru'], 
             name: 'domain'
         )
+        booleanParam(
+                name: 'DebugMode',
+                defaultValue: false,
+                description: 'Debug mode'
+        )
     }
     
     stages {
@@ -59,12 +64,14 @@ pipeline {
                     println "\033[34mTest SSH copy and run script\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
+                        //SUDO https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-ru
+                        //https://sergeymukhin.com/blog/povrezhdennyy-etc-sudoers-oshibka-v-sintaksise
                         sh """  ssh ${devopsConfig.server.RemoteHost} whoami
                                 echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                                 scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} sudo /tmp/${devopsConfig.file.TestShName} ${params.domain}
-//                                ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
+                                ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
                     }
                 }

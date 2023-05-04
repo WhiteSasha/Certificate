@@ -7,10 +7,10 @@ yellow='\033[0;33m'
 # Clear the color after that
 clear='\033[0m'
 
-echo -e "\n---------------------------------------------------"
+echo -e "\n---------------------------------------------------------"
 echo -e "${green}\t --==   Update let's encrypt certificate   ==-- ${clear}"
 echo -e "\tUpdate certificate for domain: ${domain}"
-echo -e "\n---------------------------------------------------"
+echo -e "\n---------------------------------------------------------"
 
 
 sleep 2
@@ -25,7 +25,7 @@ echo -e "${yellow}* Reload Nginx config ${clear}"
 nginx -s reload
 
 echo -e "${yellow}* Read site ${clear}"
-sleep 1
+sleep 5
 curl http://${domain}
 
 echo -e "${yellow}* TEST dry run renew let's encrypt${clear}"
@@ -50,4 +50,4 @@ sleep 1
 curl --insecure -vvI https://${domain} 2>&1 | awk 'BEGIN { cert=0 } /^\* SSL connection/ { cert=1 } /^\*/ { if (cert) print }'	
 
 
-echo -e "${yellow} ***WELL DONE***${clear}"
+echo -e "${yellow} ***---- WELL DONE ----***${clear}"
