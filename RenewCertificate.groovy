@@ -78,7 +78,7 @@ pipeline {
                                 ssh ${devopsConfig.server.RemoteHost} sudo /tmp/${devopsConfig.file.TestShName} ${params.domain} ${params.DryRunMode}
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
-                    archiveArtifacts artifacts: "**/*.log,*.log", allowEmptyArchive: true
+                    archiveArtifacts artifacts: "/var/log/letsencrypt/letsencrypt.log,**/*.log,*.log", allowEmptyArchive: true
                     }
                 }
 
