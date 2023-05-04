@@ -43,7 +43,7 @@ if ${DryRunMode}; then
   else
     echo -e "${yellow}* Dry Run let's encrypt: ${DryRunMode} ${clear}"
     echo -e "${green}* !!! WARNING !!!${clear}"
-    certbot certonly --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
+    certbot certonly --webroot -w /var/www/${domain} -d ${domain}
 fi
 
 #check result
