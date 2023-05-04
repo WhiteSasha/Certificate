@@ -13,6 +13,10 @@ pipeline {
         ansiColor('xterm')
     }
 
+    parameters {
+        string(name: 'domain', defaultValue: '--Выбери домен--', description: 'Домен для обновления сертификата')
+    }
+
     stages {
         stage ("Read configs") {
                     steps {
@@ -37,7 +41,7 @@ pipeline {
                 script {
                     //Зачистка WorkSpace!
 //                    cleanWs()
-                echo "domain === $domain"
+                echo "domain === ${params.domain}"
                     sh 'echo "======Проверка переменных====="'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
