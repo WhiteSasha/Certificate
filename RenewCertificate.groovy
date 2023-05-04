@@ -16,7 +16,7 @@ pipeline {
 //    parameters {
 //        string(name: 'domain', defaultValue: '--Выбери домен--', description: 'Домен для обновления сертификата')
 //    }
-    parameters{[
+    parameters{
         choice(
             choices: ['nexus', 'jenkins', 'seafiles'], 
             name: 'domain'
