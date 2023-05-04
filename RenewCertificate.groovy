@@ -13,15 +13,14 @@ pipeline {
         ansiColor('xterm')
     }
 
-//    parameters {
-//        string(name: 'domain', defaultValue: '--Выбери домен--', description: 'Домен для обновления сертификата')
-//    }
+//Параметризированая джоба. https://devopscube.com/declarative-pipeline-parameters/ Параметры в UI джобы появятся после первого запуска
     parameters{
         choice(
             choices: ['nexus', 'jenkins', 'seafiles'], 
             name: 'domain'
         )
     }
+    
     stages {
         stage ("Read configs") {
                     steps {
