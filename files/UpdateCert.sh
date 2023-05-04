@@ -31,7 +31,7 @@ sleep 5
 curl http://${domain}
 
 #Dry Run mode
-if [[${DryRunMode} == true]]; then
+if ${DryRunMode}; then
   echo -e "${yellow}* Dry Run let's encrypt: ${DryRunMode} ${clear}"
   certbot certonly --dry-run --webroot -w /var/www/${domain} -d ${domain}
   else
