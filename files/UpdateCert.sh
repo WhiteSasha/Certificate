@@ -36,8 +36,8 @@ if ${DryRunMode}; then
   certbot certonly --dry-run --webroot -w /var/www/${domain} -d ${domain}
   else
     echo -e "${yellow}* Dry Run let's encrypt: ${DryRunMode} ${clear}"
-    echo -e "${green}* !! Renew let's encrypt !!${clear}"
-    #certbot certonly --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
+    echo -e "${green}* !!! WARNING !!!${clear}"
+    certbot certonly --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
 fi
 
 #check result

@@ -62,11 +62,11 @@ pipeline {
             }
         }
 
-        stage( 'Test SSH copy and run script' ) {
+        stage( 'SSH copy and run script' ) {
             steps {
                 script {
                     sh "echo '==RemoteHost==: ${devopsConfig.server.RemoteHost}'"
-                    println "\033[34mTest SSH copy and run script\033[0m"
+                    println "\033[34mSSH copy and run script\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
                         //SUDO https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-ru
@@ -78,6 +78,7 @@ pipeline {
                                 ssh ${devopsConfig.server.RemoteHost} sudo /tmp/${devopsConfig.file.TestShName} ${params.domain} ${params.DryRunMode}
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
+                    archiveArtifacts artifacts: "**/*.log,*.log", allowEmptyArchive: true
                     }
                 }
 
