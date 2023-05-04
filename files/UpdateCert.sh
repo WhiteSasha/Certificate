@@ -1,5 +1,6 @@
 #!/bin/bash
 domain="$1"
+DryRunMode="$2"
 
 # Set the color variable
 green='\033[0;32m'
@@ -10,6 +11,7 @@ clear='\033[0m'
 echo -e "\n---------------------------------------------------------"
 echo -e "${green}\t --==   Update let's encrypt certificate   ==-- ${clear}"
 echo -e "\tUpdate certificate for domain: ${domain}"
+echo -e "\tDry run mode: ${DryRunMode}"
 echo -e "\n---------------------------------------------------------"
 
 
