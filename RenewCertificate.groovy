@@ -104,7 +104,7 @@ pipeline {
             steps {
                 echo "Debug mode"
                 script {
-                    println "\033[34mDebug mode \033[0m"
+                    println "\033[34mDebug mode: ${params.DebugMode} \033[0m"
                     echo "Debug mode : ${params.DebugMode}"
                 }
             }
