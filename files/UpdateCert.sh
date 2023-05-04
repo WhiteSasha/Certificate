@@ -22,7 +22,7 @@ echo -e "${yellow}* Create new link ${clear}"
 ln -s /etc/nginx/sites-available/${domain}:for_letsencrypt /etc/nginx/sites-enabled/${domain}:for_letsencrypt
 
 echo -e "${yellow}* Reload Nginx config ${clear}"
-sudo nginx -s reload
+nginx -s reload
 
 echo -e "${yellow}* Read site ${clear}"
 sleep 1
