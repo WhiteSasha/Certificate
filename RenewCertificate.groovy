@@ -13,9 +13,9 @@ pipeline {
         ansiColor('xterm')
     }
 
-    parameters {
-        string(name: 'domain', defaultValue: '--Выбери домен--', description: 'Домен для обновления сертификата')
-    }
+//    parameters {
+//        string(name: 'domain', defaultValue: '--Выбери домен--', description: 'Домен для обновления сертификата')
+//    }
 
     stages {
         stage ("Read configs") {
