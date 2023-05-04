@@ -37,7 +37,7 @@ pipeline {
                 script {
                     //Зачистка WorkSpace!
 //                    cleanWs()
-                echo "domain === ${domain}"
+                echo "domain === $domain"
                     sh 'echo "======Проверка переменных====="'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
