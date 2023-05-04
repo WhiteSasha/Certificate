@@ -9,8 +9,9 @@ clear='\033[0m'
 
 echo -e "\n---------------------------------------------------"
 echo -e "${green}\t --==   Update let's encrypt certificate   ==-- ${clear}"
+echo -e "\tUpdate certificate for domain: ${domain}"
 echo -e "\n---------------------------------------------------"
-echo "Update certificate for domain: ${domain}"
+
 
 sleep 2
 
