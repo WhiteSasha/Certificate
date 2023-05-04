@@ -30,11 +30,15 @@ echo -e "${yellow}* Read site ${clear}"
 sleep 5
 curl http://${domain}
 
-echo -e "${yellow}* TEST dry run renew let's encrypt${clear}"
-certbot certonly --dry-run --webroot -w /var/www/${domain} -d ${domain}
-
-echo -e "${green}* !! Renew let's encrypt !!${clear}"
-#certbot certonly --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
+#Dry Run mode
+if [[${DryRunMode} == true]]; then
+  echo -e "${yellow}* Dry Run let's encrypt: ${DryRunMode} ${clear}"
+  certbot certonly --dry-run --webroot -w /var/www/${domain} -d ${domain}
+  else
+    echo -e "${yellow}* Dry Run let's encrypt: ${DryRunMode} ${clear}"
+    echo -e "${green}* !! Renew let's encrypt !!${clear}"
+    #certbot certonly --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
+fi
 
 #check result
 
