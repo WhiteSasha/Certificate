@@ -1,9 +1,9 @@
 server:
   login: white
   host: 192.168.40.180
-  RemoteHost: white@192.168.40.180
+  RemoteHost: serviceuser@192.168.40.180
   NewRemoteHost: root@192.168.40.109
-  SSHCredentials: white_SSH
+  SSHCredentials: serviceuser_SSH
 git:
   httpsurl: https://***.ru
   sshurl: ssh://git@***:7999
