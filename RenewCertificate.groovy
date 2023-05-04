@@ -63,8 +63,7 @@ pipeline {
                                 echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                                 scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
-                                    // SUDO https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-ru
-                                ssh ${devopsConfig.server.RemoteHost} sudo sh /tmp/${devopsConfig.file.TestShName} ${params.domain}
+                                ssh ${devopsConfig.server.RemoteHost} sudo /tmp/${devopsConfig.file.TestShName} ${params.domain}
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
                     }
