@@ -41,7 +41,7 @@ pipeline {
                 script {
                     //Зачистка WorkSpace!
 //                    cleanWs()
-                echo "domain === ${params.domain}"
+                echo "Choosed domain : ${params.domain}"
                     sh 'echo "======Проверка переменных====="'
 //                    sh 'echo ${devopsConfig.server.RemoteHost}'
                 }
@@ -58,7 +58,7 @@ pipeline {
                         sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                                 scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
-                                ssh ${devopsConfig.server.RemoteHost} sh /tmp/${devopsConfig.file.TestShName} 
+                                ssh ${devopsConfig.server.RemoteHost} sh /tmp/${devopsConfig.file.TestShName} ${params.domain}
                                 ssh ${devopsConfig.server.RemoteHost} rm /tmp/${devopsConfig.file.TestShName}
                         """
                     }
