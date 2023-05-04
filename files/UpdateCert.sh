@@ -32,7 +32,7 @@ echo -e "${yellow}* TEST dry run renew let's encrypt${clear}"
 certbot certonly --dry-run --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
 
 echo -e "${green}* !! Renew let's encrypt !!${clear}"
-#certbot certonly --webroot -w /var/www/nexus -d nexus.alex-white.ru
+#certbot certonly --webroot -w /var/www/${domain} -d ${domain}.alex-white.ru
 
 #check result
 
