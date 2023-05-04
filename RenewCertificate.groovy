@@ -59,7 +59,8 @@ pipeline {
                     println "\033[34mTest SSH copy and run script\033[0m"
                     //https://www.jenkins.io/doc/pipeline/steps/ssh-agent/
                     sshagent(credentials: ["${devopsConfig.server.SSHCredentials}"]) {
-                        sh """  echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
+                        sh """  whoami
+                                echo '++==RemoteHost==++: ${devopsConfig.server.RemoteHost}'
                                 scp ./files/${devopsConfig.file.TestShName}  ${devopsConfig.server.RemoteHost}:/tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} chmod +x /tmp/${devopsConfig.file.TestShName}
                                 ssh ${devopsConfig.server.RemoteHost} sh /tmp/${devopsConfig.file.TestShName} ${params.domain}
